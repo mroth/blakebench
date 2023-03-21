@@ -1,0 +1,18 @@
+name: test
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: ['stable', 'oldstable']
+    name: Go ${{ matrix.go }} test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
+        with:
+          go-version: ${{ matrix.go }}
+      - run: go test -bench=. -benchmem -cpu=1 
+      - run: GOAMD64=v3 go test -bench=. -benchmem -cpu=1 # assume AVX2 on amd64 without runtime checks
+  
