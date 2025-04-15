@@ -1,23 +1,23 @@
-$ go test -bench=. -benchmem -cpu=1
+$ go test -bench=. -cpu=1
 goos: darwin
 goarch: arm64
 pkg: github.com/mroth/blakebench
 cpu: Apple M2 Pro
-BenchmarkXCryptoBlake/fcaddr-payload             6282751           180.0 ns/op         0 B/op          0 allocs/op
-BenchmarkXCryptoBlake/fcaddr-chksum              6738614           176.3 ns/op         0 B/op          0 allocs/op
-BenchmarkMinioBlakeSIMD/fcaddr-payload           5156140           231.2 ns/op         0 B/op          0 allocs/op
-BenchmarkMinioBlakeSIMD/fcaddr-chksum            4713930           255.0 ns/op         0 B/op          0 allocs/op
+BenchmarkXCryptoBlake/fcaddr-payload             6447487               177.2 ns/op
+BenchmarkXCryptoBlake/fcaddr-chksum              6785844               175.1 ns/op
+BenchmarkMinioBlakeSIMD/fcaddr-payload           5803861               205.6 ns/op
+BenchmarkMinioBlakeSIMD/fcaddr-chksum            5179191               226.6 ns/op
 PASS
-ok      github.com/mroth/blakebench     5.689s
+ok      github.com/mroth/blakebench     5.674s
 
 $ GOAMD64=v3 go test -bench=. -benchmem -cpu=1
 goos: linux
 goarch: amd64
 pkg: github.com/mroth/blakebench
-cpu: Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz
-BenchmarkXCryptoBlake/fcaddr-payload         	 5997702	       205.4 ns/op	       0 B/op	       0 allocs/op
-BenchmarkXCryptoBlake/fcaddr-chksum          	 6164827	       194.6 ns/op	       0 B/op	       0 allocs/op
-BenchmarkMinioBlakeSIMD/fcaddr-payload       	 4708561	       254.9 ns/op	       0 B/op	       0 allocs/op
-BenchmarkMinioBlakeSIMD/fcaddr-chksum        	 4252591	       281.9 ns/op	       0 B/op	       0 allocs/op
+cpu: AMD EPYC 7763 64-Core Processor                
+BenchmarkXCryptoBlake/fcaddr-payload         	 6237770	           193.0 ns/op
+BenchmarkXCryptoBlake/fcaddr-chksum          	 6213296	           192.9 ns/op
+BenchmarkMinioBlakeSIMD/fcaddr-payload       	 4714474	           254.8 ns/op
+BenchmarkMinioBlakeSIMD/fcaddr-chksum        	 4257506	           283.1 ns/op
 PASS
-ok  	github.com/mroth/blakebench	5.779s
+ok  	github.com/mroth/blakebench	    5.747s
